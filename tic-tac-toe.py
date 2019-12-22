@@ -146,3 +146,114 @@ def replay():
             return False
         else:
             bool_value = 0
+
+
+
+# Put everything together and create the game
+
+while True:
+
+    #Set up the game
+
+    tic_board = ['#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+
+    game_on = True
+
+    player1_marker = player_input()
+    player2_marker = ''
+
+    if player1_marker == 'X':
+        player2_marker = 'O'
+    else:
+        player2_marker = 'X'
+
+    print("Player 1 picked '{}', and Player 2 gets '{}'".format(player1_marker, player2_marker))
+
+    time.sleep(2.5)
+    print("Let's see who goes first...")
+    time.sleep(2)
+
+    # Remember to get the tuple results to be used from choose_first function:
+    rand_player_int, rand_player_str = choose_first()
+
+    print(rand_player_str)
+
+    time.sleep(2)
+    print('Here comes the board! Have fun :)')
+    time.sleep(1.4)
+
+    display_board(tic_board)
+
+    while game_on:
+
+        # Player 1's turn
+        if rand_player_int == 1:
+
+            print('\n'*100)
+
+            print("\nPLAYER 1\n")
+
+            display_board(tic_board)
+
+            print("\n")
+
+            player1_position = player_choice(tic_board)
+
+            place_marker(tic_board, player1_marker, player1_position)
+
+            # Check if winner, the board is full, or continue the game to the next player
+            if win_check(tic_board, player1_marker):
+                print('\n'*100)
+                display_board(tic_board)
+                print("\nPlayer 1 wins!")
+                game_on = False
+                continue
+            elif full_board_check(tic_board):
+                print('\n'*100)
+                display_board(tic_board)
+                print("\nLooks like we have a tie :( WAH! WAH!")
+                game_on = False
+                continue
+            else:
+                rand_player_int = 2
+                continue
+
+        # Player 2's turn
+        elif rand_player_int == 2:
+
+            print('\n'*100)
+
+            print("\n\n")
+
+            display_board(tic_board)
+
+            print("\nPLAYER 2")
+
+            player2_position = player_choice(tic_board)
+
+            place_marker(tic_board, player2_marker, player2_position)
+
+            if win_check(tic_board, player2_marker):
+                print('\n'*100)
+                display_board(tic_board)
+                print("\nPlayer 2 wins!")
+                game_on = False
+                continue
+            elif full_board_check(tic_board):
+                print('\n'*100)
+                display_board(tic_board)
+                print("\nLooks like we have a tie :( WAH! WAH!")
+                game_on = False
+                continue
+            else:
+                rand_player_int = 1
+                continue
+
+    # Check if the players want to replay the game
+    else:
+        if not replay():
+            False
+            break
+        else:
+            True
+            continue
