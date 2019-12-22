@@ -151,7 +151,7 @@ def player_choice(board):
             bool_value = 0
 ```
 
-The last function asks the player(s) if they would like play the game again. It handles different edge cases like `yes` or `y`. Returns `True` if the player(s) do want to play again, `False` if they do not, and the prompt keeps asking until the conditionals are met:
+The last function asks the player(s) if they would like to play the game again. It handles different edge cases like `yes` or `y`. Returns `True` if the player(s) do want to play again, `False` if they do not, and the prompt keeps asking until the conditionals are met:
 
 ```
 def replay():
@@ -173,4 +173,4 @@ And that is all towards making the Tic-Tac-Toe game!
 
 ## Conclusions
 
-Many thanks to anyone visiting this repository, and many thanks to `Jose Portilla` for inspiring and helping others to learn and become a better programmer. Remember to keep pushing no matter what and if you are alone.
+Many thanks to anyone visiting this repository, and many thanks to `Jose Portilla` for inspiring and helping others to learn and become a better programmer. Remember to keep pushing no matter what even if you are alone.
