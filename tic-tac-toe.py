@@ -103,3 +103,46 @@ def choose_first():
 # Create a function that checks if the space on the board is free
 def space_check(board, position):
     return board[position].isspace()
+
+
+
+# Create a function that checks if there are no spaces on the board
+def full_board_check(board):
+    bool_value = True
+
+    for full in board:
+        if full.isspace():
+            bool_value = False
+
+    return bool_value
+
+
+
+# Create a function asking for the player's next position, and also checks if the space is empty by using the space_check function
+def player_choice(board):
+    bool_value = 0
+
+    while bool_value < 1:
+        position = int(input('Choose your next position: (1-9) '))
+        if space_check(board, position):
+            bool_value = 1
+            return position
+        else:
+            bool_value = 0
+
+
+
+# Create a function that asks the player if they want to play the game after finishing
+def replay():
+    bool_value = 0
+
+    while bool_value < 1:
+        replay_input = input('Do you want to play again? (Yes/No) ')
+        if replay_input.lower() == 'yes' or replay_input.lower() == 'y':
+            bool_value = 1
+            return True
+        elif replay_input.lower() == 'no' or replay_input.lower() == 'n':
+            bool_value = 1
+            return False
+        else:
+            bool_value = 0
